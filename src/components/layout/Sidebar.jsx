@@ -1,6 +1,5 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { Logo } from '../common/Logo';
 
 export const Sidebar = () => {
   const { activePage, setActivePage, isGestorMode, setIsGestorMode, setIsLoginOpen } = useApp();
@@ -8,7 +7,18 @@ export const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div style={{ padding: '0 16px 20px', borderBottom: '1px solid var(--border)', marginBottom: '16px', display: 'flex', justifyContent: 'center' }}>
-        <Logo size={140} />
+        <img 
+          src="pwa-icons/icon-512x512.png" 
+          alt="Nextuber" 
+          style={{ 
+            width: '130px', 
+            height: '130px', 
+            borderRadius: '16px', 
+            display: 'block', 
+            boxShadow: '0 6px 18px rgba(236,112,0,0.3)',
+            objectFit: 'cover'
+          }} 
+        />
       </div>
 
       <div className="nav-section">
