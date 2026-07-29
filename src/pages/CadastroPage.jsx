@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { exportEstagiariosToExcel } from '../services/exportExcel';
-import { Download } from 'lucide-react';
 
 export const CadastroPage = () => {
   const { estagiarios, addEstagiario, isGestorMode, setIsLoginOpen, showToast } = useApp();
@@ -31,7 +30,7 @@ export const CadastroPage = () => {
 
   if (!isGestorMode) {
     return (
-      <div className="page-container" style={{ textAlign: 'center', padding: '60px 20px' }}>
+      <div className="page active" style={{ textAlign: 'center', padding: '60px 20px' }}>
         <div style={{ fontSize: '42px', marginBottom: '16px' }}>🔒</div>
         <h2 style={{ fontFamily: 'DM Serif Display, serif', fontSize: '24px', marginBottom: '8px' }}>
           Área Restrita a Gestores
@@ -47,7 +46,7 @@ export const CadastroPage = () => {
   }
 
   return (
-    <div className="page-container">
+    <div className="page active" id="page-cadastro">
       <div className="ph" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
         <div>
           <h1>Gestão & <em>Cadastro</em></h1>
@@ -57,10 +56,9 @@ export const CadastroPage = () => {
         <button 
           className="btn-mode"
           onClick={handleExport}
-          style={{ width: 'auto', padding: '8px 16px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+          style={{ width: 'auto', padding: '8px 16px' }}
         >
-          <Download size={14} />
-          Exportar Relatório (.XLSX)
+          📥 Exportar Relatório (.XLSX)
         </button>
       </div>
 

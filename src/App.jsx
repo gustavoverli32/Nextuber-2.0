@@ -17,18 +17,18 @@ export const App = () => {
   const { activePage } = useApp();
 
   return (
-    <div className="app-layout">
-      {/* Sidebar Desktop */}
-      <Sidebar />
-
+    <div className="layout">
       {/* Topbar Mobile */}
       <MobileTopbar />
+
+      {/* Sidebar Desktop */}
+      <Sidebar />
 
       {/* Drawer Mobile */}
       <Drawer />
 
       {/* Conteúdo Principal */}
-      <main className="main-content">
+      <main className="main">
         {activePage === 'overview' && <VisaoGeralPage />}
         {activePage === 'estagiarios' && <EstagiariosPage />}
         {activePage === 'cadastro' && <CadastroPage />}

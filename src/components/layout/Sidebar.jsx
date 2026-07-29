@@ -1,6 +1,5 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { LayoutDashboard, Users, UserPlus, Compass } from 'lucide-react';
 
 export const Sidebar = () => {
   const { activePage, setActivePage, isGestorMode, setIsGestorMode, setIsLoginOpen, estagiarios } = useApp();
@@ -12,22 +11,8 @@ export const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="sb-logo">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <div style={{
-            width: '32px',
-            height: '32px',
-            borderRadius: '8px',
-            background: 'var(--or)',
-            color: '#fff',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontWeight: 'bold',
-            fontFamily: 'DM Serif Display, serif'
-          }}>N</div>
-          <span style={{ fontFamily: 'DM Serif Display, serif', fontSize: '20px', color: 'var(--ink)' }}>
-            Next<span style={{ color: 'var(--or)' }}>uber</span> 2.0
-          </span>
+        <div style={{ fontFamily: 'DM Serif Display, serif', fontSize: '24px', color: 'var(--ink)', marginBottom: '4px' }}>
+          Next<span style={{ color: 'var(--or)' }}>uber</span>
         </div>
         <div className="sub">A próxima geração de Itubers</div>
       </div>
@@ -39,7 +24,6 @@ export const Sidebar = () => {
           className={`nav-item ${activePage === 'overview' ? 'active' : ''}`}
           onClick={() => setActivePage('overview')}
         >
-          <LayoutDashboard size={16} />
           <span>Visão Geral</span>
         </div>
 
@@ -47,7 +31,6 @@ export const Sidebar = () => {
           className={`nav-item ${activePage === 'estagiarios' ? 'active' : ''}`}
           onClick={() => setActivePage('estagiarios')}
         >
-          <Users size={16} />
           <span>Estagiários</span>
         </div>
 
@@ -55,7 +38,6 @@ export const Sidebar = () => {
           className={`nav-item ${activePage === 'cadastro' ? 'active' : ''}`}
           onClick={() => setActivePage('cadastro')}
         >
-          <UserPlus size={16} />
           <span>Gestão & Cadastro</span>
         </div>
 
@@ -63,7 +45,6 @@ export const Sidebar = () => {
           className={`nav-item ${activePage === 'trilhas' ? 'active' : ''}`}
           onClick={() => setActivePage('trilhas')}
         >
-          <Compass size={16} />
           <span>Trilhas de Dev</span>
         </div>
       </div>
@@ -95,8 +76,7 @@ export const Sidebar = () => {
       </div>
 
       <div className="sb-footer">
-        <div>Plataforma <strong>Nextuber 2.0</strong></div>
-        <div style={{ fontSize: '11px', marginTop: '2px' }}>Versão React + Vite</div>
+        Plataforma <strong>Nextuber</strong>
       </div>
     </aside>
   );

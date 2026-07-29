@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { AlertCircle, Search, ArrowUpRight } from 'lucide-react';
 
 export const EstagiariosPage = () => {
   const { estagiarios, setSelectedEstagiario, toggleAtencao, isGestorMode } = useApp();
@@ -15,7 +14,7 @@ export const EstagiariosPage = () => {
   });
 
   return (
-    <div className="page-container">
+    <div className="page active" id="page-estagiarios">
       <div className="ph" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
         <div>
           <h1>Base de <em>Estagiários</em></h1>
@@ -27,21 +26,19 @@ export const EstagiariosPage = () => {
             className={`btn-atencao ${filterAtencaoOnly ? 'ativo' : ''}`}
             onClick={() => setFilterAtencaoOnly(!filterAtencaoOnly)}
           >
-            <AlertCircle size={14} />
-            {filterAtencaoOnly ? 'Mostrando Apenas Atenção' : 'Filtrar Requer Atenção'}
+            ⚠️ {filterAtencaoOnly ? 'Mostrando Apenas Atenção' : 'Filtrar Requer Atenção'}
           </button>
         </div>
       </div>
 
       <div style={{ marginBottom: '16px', position: 'relative', maxWidth: '360px' }}>
-        <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--ink3)' }} />
         <input 
           type="text"
-          className="lin"
+          className="field-in"
           placeholder="Buscar por nome ou função..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ paddingLeft: '36px', marginBottom: 0 }}
+          style={{ marginBottom: 0 }}
         />
       </div>
 
@@ -55,7 +52,7 @@ export const EstagiariosPage = () => {
             <div className="nc-top">
               <div className="nc-avatar">{est.avatar}</div>
               <div className="nc-name">{est.name}</div>
-              <ArrowUpRight size={16} className="nc-arrow" />
+              <span className="nc-arrow">→</span>
             </div>
 
             <div className="nc-meta">

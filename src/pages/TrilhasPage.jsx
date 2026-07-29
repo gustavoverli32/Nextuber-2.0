@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { initialTrilhas } from '../services/supabase';
 import { RichEditor } from '../components/common/RichEditor';
 import { useApp } from '../context/AppContext';
-import { Plus, ChevronRight } from 'lucide-react';
 
 export const TrilhasPage = () => {
   const { isGestorMode, showToast } = useApp();
@@ -42,7 +41,7 @@ export const TrilhasPage = () => {
   };
 
   return (
-    <div className="page-container">
+    <div className="page active" id="page-trilhas">
       <div className="ph">
         <h1>Trilhas de <em>Desenvolvimento</em></h1>
         <p>Guias práticos, rotinas de estudos e checklists por área de atuação.</p>
@@ -77,7 +76,7 @@ export const TrilhasPage = () => {
                 {topico.num}
               </div>
               <div className="acc-title">{topico.tema}</div>
-              <ChevronRight size={18} className="acc-arrow" />
+              <span className="acc-arrow">›</span>
             </div>
 
             <div className="acc-body">
@@ -121,8 +120,7 @@ export const TrilhasPage = () => {
         <div style={{ marginTop: '24px' }}>
           {!showForm ? (
             <button className="btn-show-add" onClick={() => setShowForm(true)}>
-              <Plus size={16} />
-              Adicionar Novo Conteúdo à Trilha
+              + Adicionar Novo Conteúdo à Trilha
             </button>
           ) : (
             <form onSubmit={handleAddConteudo} className="add-conteudo-form">
