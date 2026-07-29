@@ -1,82 +1,100 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
+import { Logo } from '../common/Logo';
 
 export const Sidebar = () => {
-  const { activePage, setActivePage, isGestorMode, setIsGestorMode, setIsLoginOpen, estagiarios } = useApp();
-
-  const totalEstagiarios = estagiarios.length;
-  const concluidos = estagiarios.filter(e => e.cicloProgress >= 80).length;
-  const pctGeral = totalEstagiarios > 0 ? Math.round((concluidos / totalEstagiarios) * 100) : 0;
+  const { activePage, setActivePage, isGestorMode, setIsGestorMode, setIsLoginOpen } = useApp();
 
   return (
     <aside className="sidebar">
-      <div className="sb-logo">
-        <div style={{ fontFamily: 'DM Serif Display, serif', fontSize: '24px', color: 'var(--ink)', marginBottom: '4px' }}>
-          Next<span style={{ color: 'var(--or)' }}>uber</span>
-        </div>
-        <div className="sub">A próxima geração de Itubers</div>
+      <div style={{ padding: '0 16px 20px', borderBottom: '1px solid var(--border)', marginBottom: '16px', display: 'flex', justifyContent: 'center' }}>
+        <Logo size={140} />
       </div>
 
       <div className="nav-section">
-        <div className="nav-lbl">Menu Principal</div>
+        <div className="nav-lbl">PAINEL</div>
         
         <div 
-          className={`nav-item ${activePage === 'overview' ? 'active' : ''}`}
-          onClick={() => setActivePage('overview')}
+          className={`nav-item ${activePage === 'home' ? 'active' : ''}`}
+          onClick={() => setActivePage('home')}
         >
-          <span>Visão Geral</span>
+          <span style={{ fontSize: '14px' }}>📙</span>
+          <span>Página inicial</span>
         </div>
 
         <div 
-          className={`nav-item ${activePage === 'estagiarios' ? 'active' : ''}`}
-          onClick={() => setActivePage('estagiarios')}
+          className={`nav-item ${activePage === 'acompanhamento' ? 'active' : ''}`}
+          onClick={() => setActivePage('acompanhamento')}
         >
-          <span>Estagiários</span>
+          <span style={{ fontSize: '14px' }}>🕸️</span>
+          <span>Acompanhamento</span>
         </div>
 
         <div 
           className={`nav-item ${activePage === 'cadastro' ? 'active' : ''}`}
           onClick={() => setActivePage('cadastro')}
         >
-          <span>Gestão & Cadastro</span>
+          <span style={{ fontSize: '14px' }}>📋</span>
+          <span>Cadastro</span>
         </div>
+
+        <div className="nav-lbl" style={{ marginTop: '16px' }}>PROGRAMA</div>
 
         <div 
           className={`nav-item ${activePage === 'trilhas' ? 'active' : ''}`}
           onClick={() => setActivePage('trilhas')}
         >
-          <span>Trilhas de Dev</span>
+          <span style={{ fontSize: '14px' }}>🌖</span>
+          <span>Trilhas</span>
+        </div>
+
+        <div 
+          className={`nav-item ${activePage === 'agendamentos' ? 'active' : ''}`}
+          onClick={() => setActivePage('agendamentos')}
+        >
+          <span style={{ fontSize: '14px' }}>❇️</span>
+          <span>Agendamentos</span>
+        </div>
+
+        <div className="nav-lbl" style={{ marginTop: '16px' }}>SISTEMA</div>
+
+        <div 
+          className={`nav-item ${activePage === 'configuracoes' ? 'active' : ''}`}
+          onClick={() => setActivePage('configuracoes')}
+        >
+          <span style={{ fontSize: '14px' }}>⚙️</span>
+          <span>Configurações</span>
         </div>
       </div>
 
-      <div className="sb-progress">
+      <div className="sb-progress" style={{ marginTop: '12px' }}>
         <div className="sb-progress-row">
-          <span>Meta do Ciclo</span>
-          <span>{pctGeral}%</span>
+          <span>PROGRESSO</span>
+          <span>0%</span>
         </div>
         <div className="sb-track">
-          <div className="sb-fill" style={{ width: `${pctGeral}%` }}></div>
+          <div className="sb-fill" style={{ width: '0%' }}></div>
         </div>
       </div>
 
-      <div className="sb-mode">
+      <div className="sb-mode" style={{ marginTop: '12px' }}>
         <button 
-          className={`btn-mode ${isGestorMode ? 'on' : ''}`}
+          className="btn-mode on"
           onClick={() => {
-            if (!isGestorMode) {
-              setIsLoginOpen(true);
-            } else {
-              setIsGestorMode(false);
-            }
+            if (!isGestorMode) setIsLoginOpen(true);
+            else setIsGestorMode(false);
           }}
+          style={{ borderRadius: '20px', padding: '10px', fontSize: '12.5px', fontWeight: 600 }}
         >
           <span className="mode-pulse"></span>
-          {isGestorMode ? 'Modo Gestor (Ativo)' : 'Modo Estagiário'}
+          {isGestorMode ? 'Sair do modo edição' : 'Entrar no modo edição'}
         </button>
       </div>
 
       <div className="sb-footer">
-        Plataforma <strong>Nextuber</strong>
+        <div style={{ fontSize: '11px', color: 'var(--ink3)' }}>Tutora regional</div>
+        <div style={{ fontSize: '13px', fontWeight: '600', color: 'var(--ink)' }}>Kamilla</div>
+        <div style={{ fontSize: '11px', color: 'var(--ink3)' }}>6 meses · 3 ciclos</div>
       </div>
     </aside>
   );
